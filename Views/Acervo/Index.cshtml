@@ -1,0 +1,40 @@
+@model IEnumerable<AcervoModel>
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Livros Cadastrados</h1>
+        <a class="btn btn-success mx-2" asp-controller="Acervo" asp-action="Register">Cadastrar Novo Livro</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Última Edição</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                @foreach (var livro in Model)
+                {
+                    <tr>
+                        <th scope="row">@livro.Title</th>
+                        <td>@livro.Description</td>
+                        <td>R$: @livro.Price</td>
+                        <td>@livro.Updating</td>
+                        <td>
+                            <a asp-route-id="@livro.Id" asp-controller="Acervo" asp-action="Edit" class="btn btn-warning mx-2">Editar</a>
+                            <a asp-route-id="@livro.Id" asp-controller="Acervo" asp-action="Delete" class="btn btn-danger mx-2">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

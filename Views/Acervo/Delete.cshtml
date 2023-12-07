@@ -1,0 +1,44 @@
+@model AcervoModel
+@{
+    ViewData["Title"] = "Excluir Livro";
+}
+
+<div class="container p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1>Excluir Livro</h1>
+    </div>
+
+    <form method="post" asp-controller="Acervo" asp-action="Delete">
+
+        <input type="hidden" asp-for="Id">
+
+        <h2>Deseja realmente excluir o livro?</h2>
+
+        <div class="mb-3">
+            <label for="Title" class="form-label">Titulo:</label>
+            <input asp-for="Title" type="text" class="form-control" id="Title" placeholder="Digite o nome do livro"
+                disabled>
+            <span style="color: red;" asp-validation-for="Title"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Descrição:</label>
+            <input asp-for="Description" type="text" class="form-control" id="Description"
+                placeholder="Digite uma descrição sobre o livro" disabled>
+            <span style="color: red;" asp-validation-for="Description"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Price" class="form-label">Preço:</label>
+            <input asp-for="Price" type="text" class="form-control" id="Price" placeholder="Digite o valor do livro"
+                disabled>
+            <span style="color: red;" asp-validation-for="@Model.Price"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-danger w-50">Excluir</button>
+            <a class="btn btn-primary w-50" asp-controller="Acervo" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>
